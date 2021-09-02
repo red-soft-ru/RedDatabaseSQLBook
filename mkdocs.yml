@@ -1,0 +1,6 @@
+site_name: Marshmallow Generator
+site_url: https://example.com/ba
+
+nav:
+    - 'index.md'
+    - '00_Title.md'
