@@ -2,8 +2,8 @@ site_name: Основые языка SQL в СУБД Ред База Данны�
 
 theme: readthedocs
 
-  #plugins:
-  #- with-pdf
+plugins:
+  - with-pdf
 
 nav:
   - Введение:
