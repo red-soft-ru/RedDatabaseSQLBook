@@ -1,5 +1,8 @@
 site_name: Основые языка SQL в СУБД Ред База Данных.
 
+plugins:
+  - with-pdf
+
 nav:
   - Введение:
     - Введение: '01_Introduction.md'
