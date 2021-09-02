@@ -1,7 +1,6 @@
 site_name: Основые языка SQL в СУБД Ред База Данных.
 
 nav:
-  - Главная: 'index.md'
   - Введение:
     - Введение: '01_Introduction.md'
     - История БД: '02_History.md'
@@ -13,3 +12,9 @@ nav:
     - Нормальные формы: '07_NormalForms.md'
   - Язык SQL:
     - Типы данных: '08_DataTypes.md'
+    - Домены: '09_Domains.md'
+    - Таблицы: '10_Tables.md'
+    - Генераторы и последовательности: '11_Sequences.md'
+    - Оператор SELECT: '12_Select.md'
+    - Соединения: '13_Joins.md'
+    - Фильтрация: '14_Where.md'
