@@ -3,7 +3,7 @@
 
 Предложение ``WHERE`` предназначено для ограничения количества
 возвращаемых строк, теми которые нас интересуют. Условие после ключевого
-слова ``WHERE`` может быть простым, как проверка “AMOUNT = 3”, так и
+слова ``WHERE`` может быть простым, как проверка ``“AMOUNT = 3”``, так и
 сложным, запутанным выражением, содержащим подзапросы, предикаты, вызовы
 функций, математические и логические операторы, контекстные переменные и
 многое другое.
@@ -18,7 +18,9 @@
 доступа часто поддерживают именованные параметры в виде ``: id``,
 ``: amount``, ``: a`` и т.д. Это более удобно для пользователя,
 библиотека заботится о трансляции именованных параметров в позиционные
-параметры, прежде чем передать запрос на сервер. Условие поиска может
+параметры, прежде чем передать запрос на сервер.
+
+Условие поиска может
 также содержать локальные (PSQL) или хост (ESQL) имена переменных,
 предваряемых двоеточием.
 
@@ -37,3 +39,73 @@
 помощью ``NOT``, то результат такого выражения все равно будет ``NULL``
 и строка не пройдёт. Это демонстрируется в одном из ниже приведённых
 примеров.
+
+Примеры:
+
+.. code:: sql
+
+   SELECT genus, species FROM mammals WHERE family = 'Felidae' ORDER BY genus;
+
+   SELECT * FROM persons WHERE birthyear IN (1880, 1881) OR birthyear BETWEEN 1891 AND 1898;
+
+   SELECT name, street, borough, phone FROM schools s WHERE EXISTS (SELECT * FROM pupils p WHERE p.school = s.id) ORDER BY borough, street;
+
+   SELECT * FROM employees WHERE salary >= 10000 AND position <> 'Manager';
+
+   SELECT name FROM wrestlers WHERE region = 'Europe' AND weight > ALL (SELECT weight FROM shot_putters WHERE region = 'Africa');
+
+   SELECT id, name FROM players WHERE team_id = (SELECT id FROM teams WHERE name = 'Buffaloes');
+
+   SELECT SUM (population) FROM towns WHERE name LIKE '%dam' AND province CONTAINING 'land';
+
+   SELECT pass FROM usertable WHERE username = current_user;
+
+Следующий пример показывает, что может быть, если условие поиска вычисляется как NULL.
+Предположим у вас есть таблица, в которой находятся несколько детских имён и количество
+шариков, которыми они обладают.
+
+Таблица ``MARBLETABLE``
+
+===== =======
+CHILD MARBLES
+===== =======
+Маша  5
+Миша  15
+Таня  <NULL>
+Ваня  0
+Коля  7
+Даша  17
+===== =======
+
+Первое, обратите внимание на разницу между NULL и 0. Известно, что Ваня не имеет шариков вовсе, однако неизвестно количество шариков у Тани.
+
+Теперь, если ввести этот SQL оператор:
+
+.. code:: sql
+
+   SELECT child FROM marbletable WHERE marbles > 10
+
+вы получите имена Миша, Даша. Все эти дети имеют более чем 10 шариков.
+
+Если вы отрицаете выражение:
+
+.. code:: sql
+
+   SELECT child FROM marbletable WHERE NOT marbles > 10
+
+запрос вернёт Маша, Коля, Ваня. Таня не попадет ни в одну из выборок, т.к. не известно сколько у нее шариков. Если вы измените последний запрос так:
+
+.. code:: sql
+
+   SELECT child FROM marbletable WHERE marbles <= 100
+
+результат будет тем же самым, поскольку выражение NULL <= 100 даёт UNKNOWN.
+
+Это не тоже самое что TRUE, поэтому Таня не отображена. Если вы хотите что бы в списке были перечислены все "бедные" дети, то измените запрос следующим образом:
+
+.. code:: sql
+
+   SELECT child FROM marbletable WHERE marbles <= 10 OR marbles IS NULL
+
+Теперь условие поиска становится истинным для Тани, потому что условие "marbles is null" возвращает TRUE в этом случае. Фактически, условие поиска не может быть NULL ни для одного из них.
+
