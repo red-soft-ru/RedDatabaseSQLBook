@@ -28,3 +28,4 @@
   14_Where.rst
   15_Order.rst
   16_Indicies.rst
+  17_Union.rst
