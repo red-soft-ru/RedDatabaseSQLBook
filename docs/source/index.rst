@@ -27,4 +27,4 @@
   13_Joins.rst
   14_Where.rst
   15_Order.rst
-  
+  16_Indicies.rst

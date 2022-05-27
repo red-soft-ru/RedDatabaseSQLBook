@@ -54,3 +54,13 @@ LANG_ID NAME
 
    Заметка
 
+Грамматика
+
+.. code:: ABNF
+
+    <ordering-item> ::=
+        {col-name | col-alias | col-position | expression}
+        [COLLATE collation-name]
+        [ASC[ENDING] | DESC[ENDING]]
+        [NULLS {FIRST | LAST}]
+

@@ -14,7 +14,7 @@
     ...
     ORDER BY <ordering-item> [, <ordering-item> ...]
 
-.. code:: BNF
+.. code:: ABNF
 
     <ordering-item> ::=
         {col-name | col-alias | col-position | expression}
