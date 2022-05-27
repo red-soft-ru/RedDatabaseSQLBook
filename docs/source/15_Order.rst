@@ -13,11 +13,14 @@
     SELECT ... FROM ...
     ...
     ORDER BY <ordering-item> [, <ordering-item> ...]
+
+.. code:: ABNF
+
     <ordering-item> ::=
-    {col-name | col-alias | col-position | expression}
-    [COLLATE collation-name]
-    [ASC[ENDING] | DESC[ENDING]]
-    [NULLS {FIRST | LAST}]
+        {col-name | col-alias | col-position | expression}
+        [COLLATE collation-name]
+        [ASC[ENDING] | DESC[ENDING]]
+        [NULLS {FIRST | LAST}]
 
 col-name - Полное имя столбца.
 col-alias - Алиас (псевдоним) столбца.
