@@ -26,5 +26,5 @@
   12_Select.rst
   13_Joins.rst
   14_Where.rst
-  Order.rst
+  15_Order.rst
   
