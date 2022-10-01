@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'RedDatabaseSQLBook'
-copyright = '2021, Roman Simakov'
+copyright = '2022, Roman Simakov'
 author = 'Роман Симаков'
 
 release = '0.1'

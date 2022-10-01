@@ -30,3 +30,5 @@
   16_Indicies.rst
   17_Union.rst
   18_GroupBy.rst
+  19_Aggregates.rst
+  20_WindowFunctions.rst

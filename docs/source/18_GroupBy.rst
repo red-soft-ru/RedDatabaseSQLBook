@@ -21,7 +21,7 @@
     GROUP BY <grouping-item> [, <grouping-item> ...]
     [HAVING <grouped-row-condition>] ...
 
-.. code:: ANBF
+.. code:: ABNF
 
     <grouping-item> ::= <non-aggr-select-item> | <non-aggr-expression>
     <non-aggr-select-item> ::= column-copy | column-alias | column-position 
