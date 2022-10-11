@@ -32,3 +32,4 @@
   18_GroupBy.rst
   19_Aggregates.rst
   20_WindowFunctions.rst
+  21_Insert.rst
