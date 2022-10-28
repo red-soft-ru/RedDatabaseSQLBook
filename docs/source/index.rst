@@ -33,3 +33,6 @@
   19_Aggregates.rst
   20_WindowFunctions.rst
   21_Insert.rst
+  22_Update.rst
+  23_UpdateOrInsert.rst
+  24_Delete.rst
