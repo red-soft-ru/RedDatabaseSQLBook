@@ -36,3 +36,4 @@
   22_Update.rst
   23_UpdateOrInsert.rst
   24_Delete.rst
+  25_Merge.rst
